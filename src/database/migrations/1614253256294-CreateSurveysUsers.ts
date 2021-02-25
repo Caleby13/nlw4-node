@@ -4,7 +4,7 @@ export class CreateSurveysUsers1614253256294 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: "surveys_user",
+        name: "surveys_users",
         columns: [
           {
             name: "id",
@@ -33,7 +33,7 @@ export class CreateSurveysUsers1614253256294 implements MigrationInterface {
         foreignKeys: [
           {
             name: "FKUser",
-            referencedTableName: "user",
+            referencedTableName: "users",
             referencedColumnNames: ["id"],
             columnNames: ["user_id"],
             onDelete: "CASCADE",
@@ -41,7 +41,7 @@ export class CreateSurveysUsers1614253256294 implements MigrationInterface {
           },
           {
             name: "FKSurvey",
-            referencedTableName: "survey",
+            referencedTableName: "surveys",
             referencedColumnNames: ["id"],
             columnNames: ["survey_id"],
             onDelete: "CASCADE",
@@ -53,6 +53,6 @@ export class CreateSurveysUsers1614253256294 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable("surveys_user");
+    await queryRunner.dropTable("surveys_users");
   }
 }
